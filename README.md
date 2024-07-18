@@ -1,1 +1,1 @@
-This is next app for jewerly shoping
+This is Next.js mobile app for jewerly shoping

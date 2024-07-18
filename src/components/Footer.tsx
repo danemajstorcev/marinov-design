@@ -36,7 +36,7 @@ const Footer: React.FC = () => {
                     <img src="/images/home_page/logomark_L.svg" alt="logo" />
                 </div>
                 <div className="link">
-                    <a href="/ourstory">See Our Story</a>
+                    <Link href="/ourstory">See Our Story</Link>
                 </div>
             </div>
             <div className="bottom-footer">

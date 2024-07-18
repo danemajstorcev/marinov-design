@@ -5,6 +5,7 @@ import beeAnimation from "../../public/images/home_page/bee_animation.json";
 import helmetAnimation from "../../public/images/home_page/helmet_animation.json";
 import Testimonial from "@/components/Testimonial";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Home() {
   const router = useRouter();
@@ -39,9 +40,9 @@ export default function Home() {
           />
           <div className="bracelet-heading">
             <h2>Unique Handcrafted Jewelry</h2>
-            <a onClick={handleClick} href="/productsPage" data-type="jewelry">
+            <Link onClick={handleClick} href="/productsPage" data-type="jewelry">
               Shop Now
-            </a>
+            </Link>
           </div>
         </section>
         <section className="hero-section bee-section">
@@ -52,7 +53,7 @@ export default function Home() {
           />
           <div className="bee-heading">
             <h2>Custom Made Orders</h2>
-            <a href="/customOrders">Order Now</a>
+            <Link href="/customOrders">Order Now</Link>
           </div>
         </section>
         <section className="hero-section">
@@ -63,9 +64,9 @@ export default function Home() {
           />
           <div className="helmet-heading">
             <h2>Exceptional Home Decor</h2>
-            <a onClick={handleClick} href="/productsPage" data-type="decor">
+            <Link onClick={handleClick} href="/productsPage" data-type="decor">
               Discover
-            </a>
+            </Link>
           </div>
         </section>
         <section className="always-unique-section sections">
@@ -94,7 +95,7 @@ export default function Home() {
                 evolving, adapting to the changing tides while remaining rooted
                 in our heritage.
               </p>
-              <a href="/">See Our Story</a>
+              <Link href="/">See Our Story</Link>
             </div>
           </div>
         </section>
@@ -148,7 +149,7 @@ export default function Home() {
                 Come meet us at the heart of Ohrid&rsquo;s old town and
                 experience the art of craftmanship firsthand!
               </p>
-              <a href="/">Contact Details</a>
+              <Link href="/">Contact Details</Link>
             </div>
           </div>
         </section>
