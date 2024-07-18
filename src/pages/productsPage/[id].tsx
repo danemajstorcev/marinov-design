@@ -36,7 +36,7 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:5001/products");
+        const response = await fetch("https://json-server-marinov-products.vercel.app/products");
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
@@ -254,7 +254,7 @@ export default ProductsDetail;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const response = await fetch("http://localhost:5001/products");
+    const response = await fetch("https://json-server-marinov-products.vercel.app/products");
     if (!response.ok) {
       throw new Error("Failed to fetch products");
     }
@@ -269,7 +269,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   try {
-    const response = await fetch(`http://localhost:5001/products/${params?.id}`);
+    const response = await fetch(`https://json-server-marinov-products.vercel.app/products/${params?.id}`);
     if (!response.ok) {
       throw new Error("Failed to fetch product details");
     }

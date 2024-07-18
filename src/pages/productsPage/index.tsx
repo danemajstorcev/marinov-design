@@ -225,7 +225,7 @@ const ProductsPage: NextPage<Props> = ({ productsData }) => {
 export default ProductsPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  let apiUrl = "http://localhost:5001/products";
+  let apiUrl = "https://json-server-marinov-products.vercel.app/products";
 
   const appendQueryCategoryParam = (paramName: any, paramValues: any) => {
     apiUrl += apiUrl.includes("?") ? "&" : "?";
