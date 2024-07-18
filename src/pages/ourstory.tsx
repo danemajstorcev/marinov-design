@@ -102,7 +102,7 @@ const OurStory: NextPage = () => {
               fourth <br />
               generation
             </span>{" "}
-            of our family's <br /> timeless craft.
+            of our family&apos;s <br /> timeless craft.
           </div>
           <Image
             className="ring"
