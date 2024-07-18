@@ -1,6 +1,7 @@
 import Carousel from "@/components/Carousel";
 import { NextPage } from "next";
 import React from "react";
+import Image from "next/image";
 
 const ourstory: NextPage = () => {
   const carouselImages = [
@@ -23,16 +24,20 @@ const ourstory: NextPage = () => {
           started shaping copper <br /> into high-quality household <br />{" "}
           products.
         </div>
-        <img
+        <Image
           className="cooper-pot"
           src="/images/our_story_page/copper_pot.png"
-          alt=""
+          alt="Copper Pot"
+          width={500} // Replace with actual width
+          height={500} // Replace with actual height
         />
         <div className="oxidate-cooper">
-          <img
+          <Image
             className="ohrid"
             src="/images/our_story_page/Ohrid_razglednica_1913.png"
-            alt=""
+            alt="Ohrid 1913"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
           />
           <div className="cooper-header">
             Copper <br /> oxidizes and changes over time.
@@ -51,24 +56,40 @@ const ourstory: NextPage = () => {
             business <br /> by introducing <br />{" "}
             <span className="bold">souvenirs.</span>
           </div>
-          <img className="belt" src="/images/our_story_page/belt.png" alt="" />
+          <Image
+            className="belt"
+            src="/images/our_story_page/belt.png"
+            alt="Belt"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
+          />
           <div className="right-text">
             Following in his father’s <br /> footsteps,{" "}
             <span className="bold">Ivan’s son Slave</span> <br /> created the
             iconic handmade <span className="bold">antique helmet,</span> which
             quickly became a symbol synonymous <br /> with our brand.
           </div>
-          <img
+          <Image
             className="slave"
             src="/images/our_story_page/slave.png"
-            alt=""
+            alt="Slave"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
           />
-          <img
+          <Image
             className="helmet"
             src="/images/our_story_page/helmet.png"
-            alt=""
+            alt="Helmet"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
           />
-<img className="branch-divider" src="images/our_story_page/branch_divider.svg" alt="" />
+          <Image
+            className="branch-divider"
+            src="/images/our_story_page/branch_divider.svg"
+            alt="Branch Divider"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
+          />
           <div className="left-text">
             <span className="bold">Today</span>, Slave’s legacy <br /> carries
             on in the hands <br /> of{" "}
@@ -82,7 +103,13 @@ const ourstory: NextPage = () => {
             </span>{" "}
             of our family's <br /> timeless craft.
           </div>
-          <img className="ring" src="/images/our_story_page/ring.png" alt="" />
+          <Image
+            className="ring"
+            src="/images/our_story_page/ring.png"
+            alt="Ring"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
+          />
           <div className="left-text">
             Under Maria's <br /> visionary leadership,
             <br /> MARINOV has taken a bold <br /> step forward with a fresh{" "}
@@ -93,10 +120,12 @@ const ourstory: NextPage = () => {
               jewelry designs.
             </span>
           </div>
-          <img
+          <Image
             className="bracelet"
             src="/images/our_story_page/bracelet.png"
-            alt=""
+            alt="Bracelet"
+            width={500} // Replace with actual width
+            height={500} // Replace with actual height
           />
           <div className="right-text">
             Using <span className="bold">traditional techniques</span> <br />{" "}
@@ -120,21 +149,52 @@ const ourstory: NextPage = () => {
           distinctive and beautifully crafted copper <br /> jewelry experience for you.
         </div>
         <div className="certified-craftmanship-wrapper">
-            <div className="certified-craftmanship-header">
+          <div className="certified-craftmanship-header">
             Certified Craftsmanship
-            </div>
-            <div className="certified-craftmanship-first-paragraph">
+          </div>
+          <div className="certified-craftmanship-first-paragraph">
             Through the years, our business and skilled craftsmen have achieved numerous certifications, showcasing our commitment <br /> to exceptional craftsmanship. We have <br /> actively engaged in international workshops,<br /> demonstrating our craft and learning from <br /> various traditions. 
-            </div>
-           
-            <div className="wall">
+          </div>
+          <div className="wall">
             <div className="certified-craftmanship-second-paragraph">
-            These experiences reflect <br /> our continuous journey <br /> of skill enhancement <br /> and passion for the art,<br /> reinforcing our <br />dedication to quality.
+              These experiences reflect <br /> our continuous journey <br /> of skill enhancement <br /> and passion for the art,<br /> reinforcing our <br />dedication to quality.
             </div>
-                <img className="certificate-one" src="images/our_story_page/certificate_1.jpg" alt="" />
-                <img className="certificate-two" src="images/our_story_page/certificate_2.jpg" alt="" />  <img className="certificate-three" src="images/our_story_page/certificate_3.jpg" alt="" />  <img className="certificate-four" src="images/our_story_page/certificate_4.jpg" alt="" />
-                <img className="certificate-five" src="images/our_story_page/certificate_5.jpg" alt="" />
-            </div>
+            <Image
+              className="certificate-one"
+              src="/images/our_story_page/certificate_1.jpg"
+              alt="Certificate 1"
+              width={500} // Replace with actual width
+              height={500} // Replace with actual height
+            />
+            <Image
+              className="certificate-two"
+              src="/images/our_story_page/certificate_2.jpg"
+              alt="Certificate 2"
+              width={500} // Replace with actual width
+              height={500} // Replace with actual height
+            />
+            <Image
+              className="certificate-three"
+              src="/images/our_story_page/certificate_3.jpg"
+              alt="Certificate 3"
+              width={500} // Replace with actual width
+              height={500} // Replace with actual height
+            />
+            <Image
+              className="certificate-four"
+              src="/images/our_story_page/certificate_4.jpg"
+              alt="Certificate 4"
+              width={500} // Replace with actual width
+              height={500} // Replace with actual height
+            />
+            <Image
+              className="certificate-five"
+              src="/images/our_story_page/certificate_5.jpg"
+              alt="Certificate 5"
+              width={500} // Replace with actual width
+              height={500} // Replace with actual height
+            />
+          </div>
         </div>
       </div>
     </main>

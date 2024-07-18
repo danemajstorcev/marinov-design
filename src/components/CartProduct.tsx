@@ -1,6 +1,7 @@
+import { useContext } from "react";
+import Image from "next/image";
 import { FavoritesAndBasketContext } from "@/context/BasketContextConstructor";
 import { ProductTypes } from "@/types";
-import { useContext } from "react";
 
 interface CartProductProps {
     product: ProductTypes;
@@ -31,7 +32,12 @@ const CartProduct: React.FC<CartProductProps> = ({ product }) => {
     return (
         <div className="row cart-product align-items-center">
             <div className="col-3 img-container">
-                <img src={product.images[0]} alt="product image" />
+                <Image 
+                    src={product.images[0]} 
+                    alt="product image" 
+                    width={100}
+                    height={100} 
+                />
             </div>
             <div className="col-6 title d-flex flex-column justify-content-between">
                 <h3>{product.name} x{product.prodQuantity}</h3>

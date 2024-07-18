@@ -1,7 +1,6 @@
 import AddToCartModal from "@/components/AddToCartModal";
 import Breadcrumbs from "@/components/BreadCrumbs";
 import Maintenance from "@/components/Maintenance";
-import ProductCard from "@/components/ProductCard";
 import ProductSameCategoryCard from "@/components/ProductSameCategoryCard";
 import { FavoritesAndBasketContext } from "@/context/BasketContextConstructor";
 import { ToggleAddToCartModalContext } from "@/context/ToggleAddToCartModal";
@@ -9,6 +8,7 @@ import { ProductTypes } from "@/types";
 import { capitalizeFirstLetter } from "@/utils/capitalizeFirstLetter";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
 
 interface Props {
@@ -19,7 +19,6 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [productQuantity, setProductQuantity] = useState<number>(1);
   const [filteredData, setFilteredData] = useState<ProductTypes[]>([]);
-  // const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const { toggle, toggleAddToCart } = useContext(ToggleAddToCartModalContext);
 
@@ -112,24 +111,30 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
             )}
 
             {/* main image */}
-            <img
+            <Image
               style={{ height: "600px" }}
               src={product.images[currentIndex]}
               alt={product.name}
+              width={600}
+              height={600}
             />
 
             {/* slide left and right  */}
-            <img
+            <Image
               src="/icons/leftArrow.png"
               className="left-arrow-detail"
               alt="leftArrow"
               onClick={goToPrevious}
+              width={24}
+              height={24}
             />
-            <img
+            <Image
               src="/icons/rightArrow.png"
               className="right-arrow-detail"
               alt="leftArrow"
               onClick={goToNext}
+              width={24}
+              height={24}
             />
           </div>
           {/* actice dots */}
@@ -137,7 +142,7 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
             <div className="d-flex justify-content-center align-items-center py-3 py-2 circles-container">
               {product.images.map((image, index) => {
                 return (
-                  <img
+                  <Image
                     key={index}
                     onClick={() => goToSlide(index)}
                     src={
@@ -146,6 +151,9 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
                         : "/icons/smallCircle.svg"
                     }
                     className="circles text-center mr-2"
+                    alt="circle"
+                    width={12}
+                    height={12}
                   />
                 );
               })}
@@ -161,8 +169,9 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
           <div className="col-12">
             <h2>{product.name}</h2>
             <h5
-              className={`${product.discount.isDiscounted ? "line-through mr-2" : ""
-                } d-inline`}
+              className={`${
+                product.discount.isDiscounted ? "line-through mr-2" : ""
+              } d-inline`}
             >
               &euro;{product.price}
             </h5>
@@ -178,8 +187,9 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
         <div className="row d-flex align-items-center">
           <div className="col-6">
             <div
-              className={`add-quantity px-5 d-flex align-items-center justify-content-around my-3 ${!product.inStock && "opacity-1"
-                }`}
+              className={`add-quantity px-5 d-flex align-items-center justify-content-around my-3 ${
+                !product.inStock && "opacity-1"
+              }`}
             >
               <span
                 className="px-3 border-right"
@@ -205,18 +215,22 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
               }
             >
               {isFavorite ? (
-                <img
+                <Image
                   className="d-inline mr-1"
                   src="/icons/dark-heart.png"
                   style={{ width: "30px" }}
-                  alt=""
+                  alt="dark heart"
+                  width={30}
+                  height={30}
                 />
               ) : (
-                <img
+                <Image
                   className="d-inline"
                   src="/icons/heart.png"
                   style={{ width: "40px" }}
-                  alt=""
+                  alt="heart"
+                  width={40}
+                  height={40}
                 />
               )}
               <p className="d-inline">Save for later</p>
@@ -224,8 +238,9 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
           </div>
           <div className="col-12 mt-2 mb-5">
             <div
-              className={`add-to-card  text-center p-2 ${!product.inStock && "opacity-1"
-                }`}
+              className={`add-to-card  text-center p-2 ${
+                !product.inStock && "opacity-1"
+              }`}
             >
               {isAddedToBasket ? (
                 <p className="mb-0">Added to the card</p>
@@ -300,11 +315,13 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
           </div>
 
           <div className="col-2 offset-5 py-5">
-            <img
+            <Image
               style={{ width: "40px" }}
               src="/images/home_page/leaf_divider.svg"
               className="text-center"
               alt="leaf"
+              width={40}
+              height={40}
             />
           </div>
         </div>

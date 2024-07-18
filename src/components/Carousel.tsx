@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 interface CarouselProps {
   images: string[];
@@ -28,28 +29,34 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {images.map((image, index) => (
-          <img
+          <Image
             key={index}
             className="slide"
             src={image}
             alt={`Slide ${index + 1}`}
+            width={800} // Replace with actual width
+            height={600} // Replace with actual height
           />
         ))}
       </div>
 
       <div className="arrows">
-        <img
+        <Image
           className="arrow prev"
           onClick={prevSlide}
           src="/images/our_story_page/arrow-left.png"
           alt="Previous slide"
+          width={24}
+          height={24}
         />
 
-        <img
+        <Image
           className="arrow next"
           onClick={nextSlide}
           src="/images/our_story_page/arrow-right.png"
           alt="Next slide"
+          width={24}
+          height={24}
         />
       </div>
 

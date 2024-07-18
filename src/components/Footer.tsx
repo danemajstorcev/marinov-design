@@ -1,8 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 const Footer: React.FC = () => {
-
     const router = useRouter();
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -16,24 +16,29 @@ const Footer: React.FC = () => {
                 query: {
                     type,
                     category,
-                }
-            })
+                },
+            });
         } else {
             router.push({
                 pathname: "/productsPage",
                 query: {
-                    type
-                }
-            })
+                    type,
+                },
+            });
         }
-    }
+    };
 
     return (
         <footer className="footer">
             <div className="top-footer">
                 <div className="overlay"></div>
                 <div className="img-container">
-                    <img src="/images/home_page/logomark_L.svg" alt="logo" />
+                    <Image
+                        src="/images/home_page/logomark_L.svg"
+                        alt="logo"
+                        width={100} // Replace with actual width
+                        height={100} // Replace with actual height
+                    />
                 </div>
                 <div className="link">
                     <Link href="/ourstory">See Our Story</Link>
@@ -42,7 +47,12 @@ const Footer: React.FC = () => {
             <div className="bottom-footer">
                 <div className="container">
                     <div className="img-container">
-                        <img src="/images/home_page/logotype-footer.svg" alt="footer logo" />
+                        <Image
+                            src="/images/home_page/logotype-footer.svg"
+                            alt="footer logo"
+                            width={100} // Replace with actual width
+                            height={40} // Replace with actual height
+                        />
                     </div>
                     <div className="footer-nav">
                         <ul className="w-100">
@@ -95,9 +105,30 @@ const Footer: React.FC = () => {
                         </ul>
                     </div>
                     <div className="socials">
-                        <Link href={"/"}><img src="/images/home_page/instagram-icon.svg" alt="instagram icon" /></Link>
-                        <Link href={"/"}><img src="/images/home_page/facebook-icon.svg" alt="facebook icon" /></Link>
-                        <Link href={"/"}><img src="/images/home_page/whatsapp-icon.png" alt="whatsapp icon" /></Link>
+                        <Link href={"/"}>
+                            <Image
+                                src="/images/home_page/instagram-icon.svg"
+                                alt="instagram icon"
+                                width={24} // Replace with actual width
+                                height={24} // Replace with actual height
+                            />
+                        </Link>
+                        <Link href={"/"}>
+                            <Image
+                                src="/images/home_page/facebook-icon.svg"
+                                alt="facebook icon"
+                                width={24} // Replace with actual width
+                                height={24} // Replace with actual height
+                            />
+                        </Link>
+                        <Link href={"/"}>
+                            <Image
+                                src="/images/home_page/whatsapp-icon.png"
+                                alt="whatsapp icon"
+                                width={24} // Replace with actual width
+                                height={24} // Replace with actual height
+                            />
+                        </Link>
                     </div>
                     <div className="legals">
                         <Link href={"/"}>Privacy Policy</Link>
@@ -110,7 +141,7 @@ const Footer: React.FC = () => {
                 </div>
             </div>
         </footer>
-    )
+    );
 }
 
 export default Footer;
