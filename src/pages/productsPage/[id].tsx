@@ -33,58 +33,44 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
   const isFavorite = favorites?.find((fav) => fav.id === product.id);
   const isAddedToBasket = basket?.find((item) => item.id === product.id);
 
-  // fetching same products as the product
+  // Fetching same category products
   useEffect(() => {
     fetch("http://localhost:5001/products")
       .then((res) => res.json())
       .then((data) => {
-        const productsData = data.filter((prod: ProductTypes) => {
-          if (prod.category === product.category) {
-            return true;
-          }
-          return false;
-        });
+        const productsData = data.filter((prod: ProductTypes) => prod.category === product.category);
         setFilteredData(productsData);
       })
       .catch((err) => console.log(err, "error fetching the data"));
-  }, []);
+  }, [product.category]);
 
-  // fns for the image carousel
+  // Image carousel functions
   const goToPrevious = () => {
     const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide
-      ? product.images.length - 1
-      : currentIndex - 1;
+    const newIndex = isFirstSlide ? product.images.length - 1 : currentIndex - 1;
     setCurrentIndex(newIndex);
   };
+
   const goToNext = () => {
     const isLastSlide = currentIndex === product.images.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   };
+
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
   };
 
-  // fns for the quantity
-  const handlePlusProductQuantity = (product: ProductTypes) => {
-    if (!product.inStock) {
-      return;
-    }
-    if (productQuantity < +product.quantity) {
+  // Quantity functions
+  const handlePlusProductQuantity = () => {
+    if (product.inStock && productQuantity < +product.quantity) {
       setProductQuantity((prev) => prev + 1);
     }
   };
 
   const handleMinusProductQuantity = () => {
-    if (!product.inStock) {
-      return;
-    }
-
-    if (productQuantity > 1) {
+    if (product.inStock && productQuantity > 1) {
       setProductQuantity((prev) => prev - 1);
-    } else {
-      setProductQuantity(1);
     }
   };
 
@@ -103,11 +89,9 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
             )}
             {/* discount  */}
             {product.discount.isDiscounted && (
-              <>
-                <span className="discounted-price">
-                  - {product.discount.discount_price}%
-                </span>
-              </>
+              <span className="discounted-price">
+                - {product.discount.discount_price}%
+              </span>
             )}
 
             {/* main image */}
@@ -137,26 +121,24 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
               height={24}
             />
           </div>
-          {/* actice dots */}
+          {/* active dots */}
           <div className="col-6 offset-3">
             <div className="d-flex justify-content-center align-items-center py-3 py-2 circles-container">
-              {product.images.map((image, index) => {
-                return (
-                  <Image
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    src={
-                      index === currentIndex
-                        ? "/icons/bigCircle.svg"
-                        : "/icons/smallCircle.svg"
-                    }
-                    className="circles text-center mr-2"
-                    alt="circle"
-                    width={12}
-                    height={12}
-                  />
-                );
-              })}
+              {product.images.map((image, index) => (
+                <Image
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  src={
+                    index === currentIndex
+                      ? "/icons/bigCircle.svg"
+                      : "/icons/smallCircle.svg"
+                  }
+                  className="circles text-center mr-2"
+                  alt="circle"
+                  width={12}
+                  height={12}
+                />
+              ))}
             </div>
           </div>
           <Breadcrumbs
@@ -193,9 +175,7 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
             >
               <span
                 className="px-3 border-right"
-                onClick={() => {
-                  handlePlusProductQuantity(product);
-                }}
+                onClick={handlePlusProductQuantity}
               >
                 +
               </span>
@@ -238,12 +218,12 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
           </div>
           <div className="col-12 mt-2 mb-5">
             <div
-              className={`add-to-card  text-center p-2 ${
+              className={`add-to-card text-center p-2 ${
                 !product.inStock && "opacity-1"
               }`}
             >
               {isAddedToBasket ? (
-                <p className="mb-0">Added to the card</p>
+                <p className="mb-0">Added to the cart</p>
               ) : (
                 <>
                   {product.inStock ? (
@@ -257,12 +237,10 @@ const ProductsDetail: NextPage<Props> = ({ product }) => {
                         toggleModal();
                       }}
                     >
-                      Add to Card
+                      Add to Cart
                     </p>
                   ) : (
-                    <>
-                      <p className="mb-0">Out of stock</p>
-                    </>
+                    <p className="mb-0">Out of stock</p>
                   )}
                 </>
               )}
@@ -347,28 +325,21 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const productsResponse = await fetch("http://localhost:5001/products");
   const productsData: ProductTypes[] = await productsResponse.json();
 
-  const paths = productsData.map((product) => {
-    return {
-      params: {
-        id: product.id,
-      },
-    };
-  });
+  const paths = productsData.map((product) => ({
+    params: { id: product.id },
+  }));
 
   return {
     paths,
     fallback: false,
   };
 };
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  let product: ProductTypes | undefined = undefined;
 
-  if (params?.id) {
-    const productsResponse = await fetch(
-      `http://localhost:5001/products/${params.id}`
-    );
-    product = await productsResponse.json();
-  }
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const productResponse = await fetch(
+    `http://localhost:5001/products/${params?.id}`
+  );
+  const product: ProductTypes = await productResponse.json();
 
   return {
     props: {
