@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
+import Image from 'next/image'; // Import Image from next/image
 
 const Checkout: NextPage = () => {
   const [inputValue, setInputValue] = useState("");
@@ -52,7 +53,7 @@ const Checkout: NextPage = () => {
       <div className="checkout-container container">
         <div className="row">
           <div className="col-12">
-            <h1>Contact and Shiping Details</h1>
+            <h1>Contact and Shipping Details</h1>
             <p>
               Have an account? link <Link href="/">Log In</Link>
             </p>
@@ -163,19 +164,23 @@ const Checkout: NextPage = () => {
               {basket.length !== 0 && (
                 <div className="gift-card-container d-flex justify-content-between align-items-center pt-5">
                   <div className="img-container">
-                    <img
+                    <Image
                       src="/images/home_page/cart-butterfly-icon.svg"
                       alt="butterfly icon"
                       className="rotate"
+                      width={50}
+                      height={50}
                     />
                   </div>
                   <div>
                     <p>I have a Discount Code / Gift Card</p>
                   </div>
                   <div className="img-container" onClick={handleToggle}>
-                    <img
+                    <Image
                       src="/icons/shevron-down-icon.svg"
                       alt="arrow pointing up"
+                      width={20}
+                      height={20}
                     />
                   </div>
                 </div>
@@ -208,15 +213,19 @@ const Checkout: NextPage = () => {
             </div>
             <div className="credid-cards d-flex justify-content-center align-items-center py-5">
               <div className="img-container">
-                <img
+                <Image
                   src="/images/Contact/visa.png"
                   alt="credit card visa image"
+                  width={100}
+                  height={50}
                 />
               </div>
               <div className="img-container">
-                <img
+                <Image
                   src="/images/Contact/masterCard.png"
                   alt="credit card master card image"
+                  width={100}
+                  height={50}
                 />
               </div>
             </div>

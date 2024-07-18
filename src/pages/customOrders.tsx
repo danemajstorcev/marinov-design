@@ -2,6 +2,7 @@ import { NextPage } from "next";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
+import Image from 'next/image'; // Import Image from next/image
 
 interface FormValues {
   name: string;
@@ -112,7 +113,7 @@ const CustomOrders: NextPage = () => {
         </div>
       </section>
       <div className="divider d-flex justify-content-center">
-        <img src="/images/home_page/leaf_divider.svg" alt="leaf divider" />
+        <Image src="/images/home_page/leaf_divider.svg" alt="leaf divider" width={500} height={500} />
       </div>
       <section className="request-form-container">
         <form ref={formRef} className="container" onSubmit={sendEmail}>
@@ -206,73 +207,89 @@ const CustomOrders: NextPage = () => {
         <div className="wrapper">
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_1.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_orders_title.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_3.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_4.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_5.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_6.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_7.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
           <div className="card">
             <div className="card-inner">
-              <img
+              <Image
                 src="/images/custom_order_page/custom_gallery_8.jpg"
                 alt="gallery image"
                 onClick={showGalleryModal}
+                width={500}
+                height={500}
               />
             </div>
           </div>
@@ -283,7 +300,12 @@ const CustomOrders: NextPage = () => {
         <div className="modal-overlay" onClick={closeModal}>
           <div className="modal-content">
             {selectedImage && (
-              <img src={selectedImage} alt="image in fullscreen" />
+              <Image
+                src={selectedImage}
+                alt="image in fullscreen"
+                width={800}
+                height={600}
+              />
             )}
           </div>
         </div>

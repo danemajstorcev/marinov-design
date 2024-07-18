@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ToggleAddToCartModalContext } from "@/context/ToggleAddToCartModal";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   const { toggle, toggleHamMenu } = useContext(ToggleHamMenuContext);
@@ -86,9 +87,11 @@ const Header: React.FC = () => {
           <AnimatePresence>
             <div className="row align-items-center justify-content-around">
               <div className="menu-container">
-                <img
+                <Image
                   src="/images/home_page/nav_item_menu.svg"
                   alt="nav menu icon"
+                  width={80}
+                  height={80}
                   onClick={toggleMenu}
                 />
                 {toggle && (
@@ -177,20 +180,29 @@ const Header: React.FC = () => {
               <Link href={"/"} className="logo-container">
                 <div className="logos-container d-flex flex-column justify-content-center align-items-center">
                   {isVisible && router.pathname === "/" && (
-                    <motion.img
-                      variants={variants}
-                      src="/images/home_page/logomark.svg"
-                      alt="logo"
-                      className="w-50 mb-3"
-                    />
+                    <motion.div variants={variants} className="w-50 mb-3">
+                      <Image
+                        src="/images/home_page/logomark.svg"
+                        alt="logo"
+                        width={100}
+                        height={100}
+                      />
+                    </motion.div>
                   )}
-                  <img src="/images/home_page/logotype.svg" alt="logo" />
+                  <Image
+                    src="/images/home_page/logotype.svg"
+                    alt="logo"
+                    width={100}
+                    height={100}
+                  />
                 </div>
               </Link>
               <Link href={"/cart"} className="cart-icon-container">
-                <img
+                <Image
                   src="/images/home_page/nav_item_cart.svg"
                   alt="cart icon"
+                  width={80}
+                  height={80}
                 />
                 {basket.length > 0 && (
                   <span className="notification-icon">{basket.length}</span>
@@ -203,4 +215,5 @@ const Header: React.FC = () => {
     </>
   );
 };
+
 export default Header;

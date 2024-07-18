@@ -3,23 +3,20 @@ import { ProductTypes } from "@/types";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useContext } from "react";
+import Image from "next/image";
 
 interface Props {
   products: ProductTypes[];
 }
 
-const ProductSameCategoryCard = ({ products }: Props) => {
-
+const ProductSameCategoryCard: React.FC<Props> = ({ products }) => {
   const router = useRouter();
   const { toggleAddToCart } = useContext(ToggleAddToCartModalContext);
 
   const handleClick = (id: number) => {
-    router.push({
-      pathname: `/productsPage/${id}`
-    });
-
+    router.push(`/productsPage/${id}`);
     toggleAddToCart(false);
-  }
+  };
 
   return (
     <div className="choose-category d-flex">
@@ -33,14 +30,18 @@ const ProductSameCategoryCard = ({ products }: Props) => {
               - {product.discount.discount_price}%
             </span>
           )}
-          <Link href={`/productsPage/${product.id}`} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
-            e.preventDefault();
-            handleClick(+product.id)
-          }}>
-            <img
+          <Link
+            href={`/productsPage/${product.id}`}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.preventDefault();
+              handleClick(+product.id);
+            }}
+          >
+            <Image
               src={product.images[0]}
-              style={{ height: "240px" }}
               alt="product image"
+              width={400}
+              height={400}
               className="w-100 d-block"
             />
           </Link>
@@ -48,9 +49,7 @@ const ProductSameCategoryCard = ({ products }: Props) => {
           <div className="content px-2">
             <p className="hide-overflow">{product.name}</p>
             <span
-              className={`${
-                product.discount.isDiscounted ? "line-through" : ""
-              }`}
+              className={product.discount.isDiscounted ? "line-through" : ""}
             >
               &euro;{product.price}
             </span>

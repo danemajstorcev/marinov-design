@@ -1,3 +1,5 @@
+import  Image  from "next/image";
+
 interface TestimonialProps {
     quote: string;
     cite: string;
@@ -10,11 +12,21 @@ const Testimonial: React.FC<TestimonialProps> = ({ quote, cite, country }) => {
         <div className="testimonial">
             <div className='testimonial-content'>
                 <div className="img-container open-position">
-                    <img src="/images/home_page/quotation_open.svg" alt="open quotation" />
+                    <Image
+                        src="/images/home_page/quotation_open.svg"
+                        alt="open quotation"
+                        width={20}
+                        height={20}
+                    />
                 </div>
                 <p>&rdquo;{quote}&rdquo;</p>
                 <div className="img-container closed-position">
-                    <img src="/images/home_page/quotation_close.svg" alt="closed quotation" />
+                    <Image
+                        src="/images/home_page/quotation_close.svg"
+                        alt="closed quotation"
+                        width={20}
+                        height={20}
+                    />
                 </div>
             </div>
             <div className="testimonial-cite">

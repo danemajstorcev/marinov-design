@@ -1,9 +1,10 @@
 import { FavoritesAndBasketContext } from "@/context/BasketContextConstructor";
 import { GetTotalCostContext } from "@/context/GetTotalCostContext";
 import { useRouter } from "next/router";
-import { NextPage } from "next/types";
+import { NextPage } from "next";
 import { useContext } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Image from "next/image";
 
 interface FormData {
   cardHolders: string;
@@ -33,22 +34,25 @@ const PaymentPage: NextPage = () => {
         <div className="container">
           <div className="secure-payment">
             <div className="secure-payment-logo">
-              <img
-                className="secure-payment-helmet"
+              <Image
                 src="/images/cardDetails/helmet.svg"
                 alt=""
+                width={50}
+                height={50}
               />
-              <img
-                className="secure-payment-marinov"
+              <Image
                 src="/images/cardDetails/marinov.svg"
                 alt=""
+                width={50}
+                height={50}
               />
             </div>
             <div className="secure-payment-header">
-              <img
-                className="lock-img"
+              <Image
                 src="/images/cardDetails/lock.svg"
                 alt=""
+                width={20}
+                height={20}
               />
               <div className="secure-payment-text">Secure Payment</div>
             </div>
@@ -94,7 +98,10 @@ const PaymentPage: NextPage = () => {
 
             <div className="form-group-order mb-5 d-flex">
               <div className="w-50">
-                <label className="card-holders-small" htmlFor="expirationDate">
+                <label
+                  className="card-holders-small"
+                  htmlFor="expirationDate"
+                >
                   Expiration Date
                 </label>
                 <input
@@ -133,15 +140,19 @@ const PaymentPage: NextPage = () => {
           </form>
           <div className="credid-cards d-flex justify-content-center align-items-center py-5">
             <div className="img-container">
-              <img
+              <Image
                 src="/images/Contact/visa.png"
                 alt="credit card visa image"
+                width={100}
+                height={60}
               />
             </div>
             <div className="img-container">
-              <img
+              <Image
                 src="/images/Contact/masterCard.png"
                 alt="credit card master card image"
+                width={100}
+                height={60}
               />
             </div>
           </div>

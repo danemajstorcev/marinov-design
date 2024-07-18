@@ -3,6 +3,7 @@ import { ProductTypes } from "@/types";
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
+import Image from "next/image"; // Import Image from next/image
 
 interface Props {
   productsData: ProductTypes[];
@@ -60,17 +61,19 @@ const ProductsPage: NextPage<Props> = ({ productsData }) => {
           <div className="col-12 px-0">
             {router.query.type === "jewelry" ? (
               <>
-                <img
+                <Image
                   src="/images/jewelry_page_earrings/jewelry_title_earrings.jpg"
                   alt=""
-                  style={{ height: "232px" }}
+                  width={1200}
+                  height={232}
                 />
               </>
             ) : (
-              <img
+              <Image
                 src="/images/home_decor_page_helmets/helmets_title.jpg"
                 alt=""
-                style={{ height: "232px" }}
+                width={1200}
+                height={232}
               />
             )}
           </div>
@@ -81,7 +84,7 @@ const ProductsPage: NextPage<Props> = ({ productsData }) => {
         <div className="row">
           <div className="col-12">
             <h1 className="font-weight-700 font-size-48">
-              {router.query.type === "jewelry" ? "Jewerly" : "Home Decor"}
+              {router.query.type === "jewelry" ? "Jewelry" : "Home Decor"}
             </h1>
           </div>
           <div className="col-12 choose-category font-amulya">
@@ -150,10 +153,12 @@ const ProductsPage: NextPage<Props> = ({ productsData }) => {
           <div className="col-12 pb-3">
             <div className="d-flex align-items-center ">
               <div className="prod-search-input position-relative mr-3">
-                <img
+                <Image
                   src="/icons/productsSearchIcon.png"
                   className="prodPage-search"
                   alt="search-icon"
+                  width={20}
+                  height={20}
                 />
                 <form onSubmit={handleOnSubmit}>
                   <input
@@ -195,10 +200,11 @@ const ProductsPage: NextPage<Props> = ({ productsData }) => {
           {isLoadMoreVisible && (
             <div className="col-12 text-center py-5">
               <div className="d-flex align-items-center justify-content-center">
-                <img
+                <Image
                   src="/icons/plusBold.png"
                   alt="bold plus"
-                  style={{ width: "20px" }}
+                  width={20}
+                  height={20}
                 />
                 <p
                   className="d-inline mb-0 ml-1 font-weight-700"

@@ -6,6 +6,7 @@ import helmetAnimation from "../../public/images/home_page/helmet_animation.json
 import Testimonial from "@/components/Testimonial";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image"; // Import Image from next/image
 
 export default function Home() {
   const router = useRouter();
@@ -82,9 +83,11 @@ export default function Home() {
         </section>
         <section className="century-old-container sections">
           <div className="img-container">
-            <img
+            <Image
               src="/images/home_page/Ohrid_razglednica_1913.png"
               alt="picture of ohrid old town"
+              width={800}
+              height={600}
             />
           </div>
           <div className="container">
@@ -100,45 +103,61 @@ export default function Home() {
           </div>
         </section>
         <div className="separator">
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
-          <img
+          <Image
             src="/images/home_page/butterfly_divider.svg"
             alt="butterfly separator"
             className="butterfly-divider"
+            width={200}
+            height={100}
           />
-          <img
+          <Image
             src="/images/home_page/dot_3px.svg"
             alt="dot separator"
             className="dot-divider"
+            width={50}
+            height={50}
           />
         </div>
         <section className="visit-section sections">
@@ -162,9 +181,11 @@ export default function Home() {
               country="Sweden"
             />
             <div className="divider d-flex justify-content-center">
-              <img
+              <Image
                 src="/images/home_page/leaf_divider.svg"
                 alt="leaf divider"
+                width={500}
+                height={100}
               />
             </div>
             <Testimonial
@@ -173,10 +194,12 @@ export default function Home() {
               country="Portugal"
             />
             <div className="divider d-flex justify-content-center">
-              <img
+              <Image
                 src="/images/home_page/leaf_divider.svg"
                 className="rotated"
                 alt="leaf divider"
+                width={500}
+                height={100}
               />
             </div>
             <Testimonial

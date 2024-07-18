@@ -1,5 +1,6 @@
 import { ProductTypes } from "@/types";
 import Link from "next/link";
+import Image from "next/image";
 
 interface ProductCardProps {
   product: ProductTypes;
@@ -9,21 +10,22 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   return (
     <div className="col-6 mb-2 position-relative">
       {product.discount.isDiscounted && (
-        <>
-          <span className="discounted-price">
-            - {product.discount.discount_price}%
-          </span>
-        </>
+        <span className="discounted-price">
+          - {product.discount.discount_price}%
+        </span>
       )}
-      <Link href={`productsPage/${product.id}`}>
-        <img src={product.images[0]} alt="product image" />
+      <Link href={`productsPage/${product.id}`} passHref>
+        <Image
+          src={product.images[0]}
+          alt="product image"
+          width={400}
+          height={400}
+        />
       </Link>
 
       <div className="content px-2">
         <h4 className="h6">{product.name}</h4>
-        <span
-          className={`${product.discount.isDiscounted ? "line-through" : ""}`}
-        >
+        <span className={product.discount.isDiscounted ? "line-through" : ""}>
           &euro;{product.price}
         </span>
         {product.discount.isDiscounted && (
